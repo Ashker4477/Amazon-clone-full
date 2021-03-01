@@ -15,8 +15,8 @@ import {
 
 const initialState = {
   UserSignin: {
-    userInfo: localStorage.getItem("UserInfo")
-      ? JSON.parse(localStorage.getItem("UserInfo"))
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
       : [],
   },
   cart: {

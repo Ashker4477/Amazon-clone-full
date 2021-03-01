@@ -14,13 +14,12 @@ import OrderScreen from "./Screen/OrderScreen";
 import OrderHistoryScreen from "./Screen/OrderHistoryScreen";
 
 function App() {
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
   const UserSignin = useSelector((state) => state.UserSignin);
   const { userInfo } = UserSignin;
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
   const dispatch = useDispatch();
-  const signoutHandler = (e) => {
-    e.preventDefault();
+  const signoutHandler = () => {
     dispatch(signout());
   };
 
@@ -40,32 +39,31 @@ function App() {
                 <span className="badge">{cartItems.length}</span>
               )}
             </Link>
-            {userInfo ? (
+            {userInfo?(
               <div className="dropdown">
                 <Link to="#">
-                  {userInfo.name}
-                  <i className="fa fa-caret-down"></i>
+                  {userInfo.name} <i className="fa fa-caret-down"></i>{" "}
                 </Link>
                 <ul className="dropdown-content">
                   <li>
                     <Link to="/orderhistory">Order History</Link>
                   </li>
                   <li>
-                    <Link to="/#signout" onClick={signoutHandler}>
-                      Signout
+                    <Link to="#signout" onClick={signoutHandler}>
+                      Sign Out
                     </Link>
                   </li>
                 </ul>
               </div>
             ) : (
-               <Link to="/signin">Sign-in</Link>
+              <Link to="/signin">Sign In</Link>
             )}
           </div>
         </header>
         <main>
+          <Route path="/signin" component={SigninScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
           <Route path="/product/:id" component={ProductScreen} />
-          <Route path="/signin" component={SigninScreen} />
           <Route path="/register" component={RegisterScreen} />
           <Route path="/shipping" component={ShippingAddressScreen} />
           <Route path="/payment" component={PaymentMethodScreen} />

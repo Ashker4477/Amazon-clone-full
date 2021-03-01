@@ -21,9 +21,7 @@
   },
   "scripts": {
     "build": "cd front-end && npm install && npm run build",
-    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js",
-    "client": "npm start --prefix front-end",
-    "dev": "concurrently \"npm run start\" \"cd front-end && npm start \""
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "author": "",
   "license": "ISC"
