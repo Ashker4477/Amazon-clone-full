@@ -25,22 +25,16 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
 
-//app.use('/register',express.static("front-end/build"));
-//app.use('/signin',express.static("front-end/build"));
-//app.use('/orderhistory',express.static("front-end/build"));
-//app.use('/order/:id',express.static("front-end/build"));
-//app.use('/orders',express.static("front-end/build"));          
-//app.use('/shipping',express.static("front-end/build"));
-//app.use('/payment',express.static("front-end/build"));
-//app.use('/placeorder',express.static("front-end/build"));
-//app.use('/cart/:id?',express.static("front-end/build"));
-//app.use('/cart',express.static("front-end/build"));
-//app.use('/product/:id',express.static("front-end/build"));
-//app.use("/",express.static("front-end/build"));
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/front-end/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/front-end/build/index.html'))
+);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
