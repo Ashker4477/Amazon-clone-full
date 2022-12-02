@@ -13,6 +13,7 @@ RUN npm run install-server
 COPY client/ client/
 RUN npm run build --prefix client
 
+COPY server/.env server/.env
 COPY server/ server/
 
 USER node 

@@ -1,7 +1,6 @@
 // .dockerignore file
 **/.classpath
 **/.dockerignore
-**/.env
 **/.git
 **/.gitignore
 **/.project
